@@ -14,19 +14,33 @@
 * **some functions that we can use to interact with SQL data**
 
 # Steps
-* Set up a PYODBC connection
+
+### Installation
 * Install the pyodbc package:
 ```
 pip install pyodbc
 ```
+
+* **Install Drivers** Use the following commands to install drivers required for compatibility with MacOS
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
+brew update
+HOMEBREW_NO_ENV_FILTERING=1 ACCEPT_EULA=Y brew install msodbcsql17 mssql-tools
+```
+    
+```
+brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
+```
+    
+```
+ brew install msodbcsql17 mssql-tools
+```
 * Once installed, create a python_sql.py file. 
-
-### Guide for setting up here**************
-
-
 
 ### Setting up a connection
 1. Import the pyodbc module 
+2. Test the pyodbc module has been imported 
 2. Define the server properties i.e. server, database, username and password. Store these as variables.
 ```python
 import pyodbc
@@ -82,13 +96,6 @@ while True:
     print(records.UnitPrice)
 ```
 
-## Task
-1. Create a new file and class with function to establish connection with pyodbc.
-2. Create a function that creates a table in DB
-3. Create a function that prompts user to input data into the table.
-4. Create a new file called PYODBC_TASK.md and document the steps to implement the task
 
 
 
-- 
- 
