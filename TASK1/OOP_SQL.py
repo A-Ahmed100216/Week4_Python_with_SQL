@@ -27,6 +27,9 @@ class Connection:
         Mina_Petstore = self.cursor.execute("SELECT * FROM Mina_Petstore").fetchall()
         return (Mina_Petstore)
 
+
+
+
     # Define a function to take user input
     def user_input(self):
         # Ask the user to input each of the columns
