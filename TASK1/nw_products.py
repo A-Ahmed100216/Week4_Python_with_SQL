@@ -18,9 +18,7 @@ class StockDepartment(Connection):
         print("\nThe average number of items in stock is {}".format(avg_stock[0][0]))
 
 
-tester=StockDepartment()
-tester.stock()
-tester.average_stock()
+
 
 
 

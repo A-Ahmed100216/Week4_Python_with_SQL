@@ -1,4 +1,4 @@
-#Python with SQL Exercise
+#Python with SQL Exercise 1
 
 ## Increment 1 Tasks
 * Create a new file and class with function to establish connection with pyodbc.
@@ -95,16 +95,27 @@ def stock(self):
         for item in self.products:
             print("{} has {} units in stock".format(item.ProductName,item.UnitsInStock))
 ```
-4. The crux of this task is to print out the average value of all the stock items. This can be achieved by executing the query to calcualte this value and simply printing in a fomratted string. The query is as follows:
+4. The crux of this task is to print out the average value of all the stock items. This can be achieved by executing the query to calcualte this value and simply printing in a formatted string. The query is as follows:
 ```
 SELECT AVG(UnitsInStock) FROM Products WHERE UnitsInStock!=0
 ```
  This query will obtain the average of the column UnitsInStock, provided the value is not 0. This condition has been introduced to prevent out-of-stock items skewing the average result. The query can then be executed in python and printed as a formatted string. As the output of the query execution is a nested list, the formatted string accesses the index at which the average value is given. 
 ```python
-    # Define a method to calculate the average of items in stock.
-    def average_stock(self):
-        # Use a query to calculate the average stock where stock is not 0 as this would skew results.
-        avg_stock= self.cursor.execute("SELECT AVG(UnitsInStock) FROM Products WHERE UnitsInStock!=0").fetchall()
-        # The query can be formatted into a string
-        print("\nThe average number of items in stock is {}".format(avg_stock[0][0]))
+# Define a method to calculate the average of items in stock.
+def average_stock(self):
+    # Use a query to calculate the average stock where stock is not 0 as this would skew results.
+    avg_stock= self.cursor.execute("SELECT AVG(UnitsInStock) FROM Products WHERE UnitsInStock!=0").fetchall()
+    # The query can be formatted into a string
+    print("\nThe average number of items in stock is {}".format(avg_stock[0][0]))
+```
+5. Create a file to run the commands. Within this file, import relevant classes and instantiate them.
+```python
+# Import relevant classes
+from TASK1.OOP_SQL import Connection
+from TASK1.nw_products import StockDepartment
+
+# Instantiate classes
+tester=StockDepartment()
+tester.stock()
+tester.average_stock()
 ```

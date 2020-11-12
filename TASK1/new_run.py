@@ -4,4 +4,5 @@ from TASK1.nw_products import StockDepartment
 
 # Instantiate classes
 tester=StockDepartment()
-print(tester.stock())
+tester.stock()
+tester.average_stock()
