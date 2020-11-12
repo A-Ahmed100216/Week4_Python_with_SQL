@@ -76,3 +76,35 @@ The stock department may have numerous requirements and it makes sense to contai
 * We've had a requirement for the stock department to print out the average value of all of our stock items.
 
 **!!!Important Note!!!** It would be more efficient to write the SQL query to find the data and compute the value and simply return the value in Python.
+
+### Process
+1. Import the Parent class connection
+```python
+from TASK1.OOP_SQL import Connection
+```
+2. Create a class for the stock department which will be a child of Connection. Initialise the class and user the ```super()``` method to inherit parent attributes. This inheritance will enable the class to connect to the database. Within this initialisation method, define a query to obtain all the rows within the Products table. 
+```python
+class StockDepartment(Connection):
+    def __init__(self):
+        super().__init__()
+        self.products=self.cursor.execute("SELECT * FROM Products").fetchall()
+```
+3. As this class pertains to stock, create a method to print the stock of each product and return as a formatted string.
+```python
+def stock(self):
+        for item in self.products:
+            print("{} has {} units in stock".format(item.ProductName,item.UnitsInStock))
+```
+4. The crux of this task is to print out the average value of all the stock items. This can be achieved by executing the query to calcualte this value and simply printing in a fomratted string. The query is as follows:
+```
+SELECT AVG(UnitsInStock) FROM Products WHERE UnitsInStock!=0
+```
+ This query will obtain the average of the column UnitsInStock, provided the value is not 0. This condition has been introduced to prevent out-of-stock items skewing the average result. The query can then be executed in python and printed as a formatted string. As the output of the query execution is a nested list, the formatted string accesses the index at which the average value is given. 
+```python
+    # Define a method to calculate the average of items in stock.
+    def average_stock(self):
+        # Use a query to calculate the average stock where stock is not 0 as this would skew results.
+        avg_stock= self.cursor.execute("SELECT AVG(UnitsInStock) FROM Products WHERE UnitsInStock!=0").fetchall()
+        # The query can be formatted into a string
+        print("\nThe average number of items in stock is {}".format(avg_stock[0][0]))
+```
