@@ -40,10 +40,13 @@ class Movies(Connection):
 
     def search_by_name(self):
         name=input("Please type the name of the movie you are looking for: ")
-        search_name=self.cursor.execute(f"SELECT {name} from movie_info").fetchone()
+        search_name=self.cursor.execute(f"SELECT {name} from movie_info WHERE ").fetchone()
+        print(search_name)
 
 
 
 test=Movies()
 # test.create_table()
-test.add_data()
+# test.add_data()
+test.show_movies()
+# test.search_by_name()
