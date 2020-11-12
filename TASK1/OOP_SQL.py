@@ -18,6 +18,7 @@ class Connection:
         # Set up cursor
         self.cursor = self.northwind_connection.cursor()
 
+# class Tables(Connection):
     # Define a function to create a new table
     def new_table(self):
         # Create a table with an columns for id, name, type, and age
@@ -29,22 +30,19 @@ class Connection:
     # Define a function to take user input
     def user_input(self):
         # Ask the user to input each of the columns
+        # while True:
         name_input = input("Enter pet name: ")
         type_input = input("Type of pet: ")
         age_input = int(input("Enter pet age: "))
         # Insert values into the table
         self.cursor.execute(f"INSERT INTO Mina_Petstore (name, type, age) VALUES('{name_input}', '{type_input}', {age_input})")
-        Mina_Petstore = self.cursor.execute("SELECT * FROM Mina_Petstore").fetchall()
+            # if name_input=="":
+            #     break
 
+        Mina_Petstore = self.cursor.execute("SELECT * FROM Mina_Petstore").fetchall()
         return Mina_Petstore
 
 
-
-
-
-
-
-
-testing=Connection()
-print(testing.new_table())
-print(testing.user_input())
+# testing=Tables()
+# print(testing.new_table())
+# print(testing.user_input())
