@@ -15,7 +15,6 @@ Now that you've learned how to connect to the DB using pyodbc you can start abst
 * You can add movies to DB
 
 
-
 ## Second iteration: IMDB CSV <> Py <> SQL
 
 ### Summary
@@ -34,3 +33,15 @@ Your task is to move data from text files into the db and from the the db into t
 ### Acceptance Criteria
 * Able to take in 10 film names in text file and save to db
 * Able to load data from DB and create text file with names
+
+
+# Process
+1. Download the csv file containing the movie data.
+2. Import relevant classes and packages:   
+The Connection class as this will be a parent class used to connect to the database.   
+The ```pandas``` package which will be used to read the csv file.
+```python
+from TASK1.OOP_SQL import Connection
+import pandas
+```
+3. 
