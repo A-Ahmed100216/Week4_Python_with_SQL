@@ -84,6 +84,7 @@ for x in product_rows:
 ```
 
 *  We can use a  while loops to ensure we only iterate through the data as long as the data is available.
+* ```while True``` is used to create an infinite loop which will only stop when the break condition is met.
 
 ```python
 product_row=cursor.execute("SELECT * FROM Products")

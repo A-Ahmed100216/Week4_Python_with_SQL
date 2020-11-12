@@ -14,8 +14,7 @@ class StockDepartment(Connection):
         # stock=self.cursor.execute("SELECT * ")
         # print(self.products)
 
-tester=StockDepartment()
-print(tester.stock())
+
 
 
 
