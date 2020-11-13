@@ -116,7 +116,21 @@ class Movies(Connection):
             f"INSERT INTO movie_info (titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres) VALUES ('{titletype}', '{primary}', '{original}','{adult}','{start}','{end}','{runtime}','{genre}')")
 
 ```
-9. Instantiate the class and execute methods. The create_table mehtod cn only be executed once otherwise it will throw an error as the object already exists. 
+9. Create a method to export back to csv
+```python
+    def new_csv(self):
+        with open("new_movie.csv","w") as updated_file:
+            # with information from our select statement
+            query=input("Please enter your query")
+            updated =pandas.read_sql_query(f'{query}', self.northwind_connection)
+            new_df=pandas.DataFrame(updated)
+            new_df.to_csv(r'\PycharmProjects\Week4_Python_with_SQL\Task 2\new_movie.csv')
+            print(new_df)
+```
+
+
+
+10. Instantiate the class and execute methods. The create_table mehtod cn only be executed once otherwise it will throw an error as the object already exists. 
 ```python
 test=Movies()
 # test.create_table()
