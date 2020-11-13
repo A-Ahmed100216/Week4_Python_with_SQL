@@ -72,13 +72,19 @@ class Movies(Connection):
         self.cursor.execute(
             f"INSERT INTO movie_info (titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres) VALUES ('{titletype}', '{primary}', '{original}','{adult}','{start}','{end}','{runtime}','{genre}')")
 
+    # Define method to create a new csv
     def new_csv(self):
+        # Open a new csv file
         with open("new_movie.csv","w") as updated_file:
-            # with information from our select statement
+            # Ask the user to input their query
             query=input("Please enter your query")
+            # Update the database with the query
             updated =pandas.read_sql_query(f'{query}', self.northwind_connection)
+            # Create a dataframe of the updated table
             new_df=pandas.DataFrame(updated)
+            # Convert to csv
             new_df.to_csv(r'\PycharmProjects\Week4_Python_with_SQL\Task 2\new_movie.csv')
+            # Print the new datafram
             print(new_df)
 
 
@@ -90,4 +96,4 @@ test=Movies()
 # test.search_by_name()
 # test.add_new_data()
 # test.show_movies()
-test.new_csv()
+# test.new_csv()
