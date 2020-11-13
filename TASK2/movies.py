@@ -2,6 +2,7 @@ from TASK1.OOP_SQL import Connection
 # Import the pandas package enabling us to read the csv file
 import pandas
 
+
 # Create a Movies class with a parent as Connection to connect to the database.
 class Movies(Connection):
     # Initialise class and inherit parent attributes
@@ -38,7 +39,7 @@ class Movies(Connection):
         # Commit to the database
         self.northwind_connection.commit()
 
-    # Define a funciton to show movies
+    # Define a function to show movies
     def show_movies(self):
         movie_info=self.cursor.execute("SELECT * FROM movie_info").fetchall()
         # Print as rows.
@@ -59,7 +60,7 @@ class Movies(Connection):
         titletype = input("Please enter the type of data you wish to input i.e. movie, short, series: ")
         primary = input("Please enter the title of the movie/series: ")
         original = input("Please enter the original name of the movie/series: ")
-        adult = input("Is the movie adult rated. Yes=1, No=0")
+        adult = input("Is the movie adult rated. Yes=1, No=0 ")
         start = input("Please enter the year of release: ")
         end = input("Please enter the year of ending: ")
         runtime = input("Please enter the runtime in minutes: ")
@@ -74,19 +75,16 @@ class Movies(Connection):
 
     # Define method to create a new csv
     def new_csv(self):
-        # Open a new csv file
-        with open("new_movie.csv","w") as updated_file:
-            # Ask the user to input their query
-            query=input("Please enter your query")
-            # Update the database with the query
-            updated =pandas.read_sql_query(f'{query}', self.northwind_connection)
-            # Create a dataframe of the updated table
-            new_df=pandas.DataFrame(updated)
-            # Convert to csv
-            new_df.to_csv(r'\PycharmProjects\Week4_Python_with_SQL\Task 2\new_movie.csv')
-            # Print the new datafram
-            print(new_df)
-
+        # Ask the user to input their query
+        query=input("Please enter your query")
+        # Update the database with the query
+        updated =pandas.read_sql_query(f'{query}', self.northwind_connection)
+        # Create a dataframe of the updated table
+        new_df=pandas.DataFrame(updated)
+        # Convert to csv
+        new_df.to_csv(r'\PycharmProjects\Week4_Python_with_SQL\TASK2\new_movie.csv')
+        # Print the new dataframe
+        print(new_df)
 
 
 # Instantiate class
